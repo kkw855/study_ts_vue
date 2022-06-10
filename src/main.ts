@@ -1,4 +1,18 @@
+import 'normalize.css'
 import { createApp } from 'vue'
-import App from './TodoList.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import App from './Tree.vue'
 
-createApp(App).mount('#app')
+// const router = createRouter({
+//   // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
+//   history: createWebHashHistory(),// short for `routes: routes`
+//   {}
+// })
+//
+// createApp(App)
+// .component('font-awesome-icon', FontAwesomeIcon)
+// .use(router)
+// .mount('#app')
+
+createApp(App)
+  .mount('#app')

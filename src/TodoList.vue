@@ -3,6 +3,7 @@ import {onMounted, reactive, watch} from 'vue'
   import {pipe, flow} from "fp-ts/function";
   import * as O from "fp-ts/Option";
   import * as E from "fp-ts/Either";
+import TreeItem from "./components/TreeItem.vue";
 
   const state = reactive({
     checked: [] as Array<string>
@@ -60,6 +61,7 @@ import {onMounted, reactive, watch} from 'vue'
       <label :for="todo">{{ todo }}</label>
     </div>
   </fieldset>
+  <TreeItem label="라벨" description="설명" />
 </template>
 
 <style scoped>
