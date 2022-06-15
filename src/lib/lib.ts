@@ -19,3 +19,12 @@ export function loadLocalStorage<A>(key: string): any {
     O.getOrElse(() => [])
   )
 }
+
+export function getLastDayInMonth(year: number, month: number): number {
+  return new Date(year, month, 0).getDate()
+}
+
+// 0 부터 Sun day
+export function getStartDayInMonth(year: number, month: number): number {
+  return new Date(year, month - 1, 1).getDay()
+}
