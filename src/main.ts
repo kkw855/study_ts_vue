@@ -1,4 +1,4 @@
-import 'normalize.css'
+import './assets/style.css'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
