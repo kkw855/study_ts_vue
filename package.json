@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "fp-ts": "^2.12.1",
+    "marked": "^4.0.17",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.25",
     "vue-router": "4"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",
+    "@types/marked": "^4.0.3",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "@vitejs/plugin-vue": "^2.3.3",

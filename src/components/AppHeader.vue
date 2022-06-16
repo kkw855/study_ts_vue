@@ -2,13 +2,29 @@
   <nav
     class="w-full bg-gradient-to-r from-blue-800 to-blue-600 text-white px-4 py-2"
   >
-    <router-link class="mx-2" to="/dc-heros">Dc Heros</router-link>
-    <router-link class="mx-2" to="/calendar">Calendar</router-link>
+    <router-link
+      v-for="link in list"
+      :key="link.path"
+      class="mx-2"
+      :to="link.to"
+    >
+      {{ link.title }}
+    </router-link>
   </nav>
 </template>
 
 <script>
-export default {
-  name: 'AppHeader',
-}
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  data() {
+    return {
+      list: [
+        { title: 'Dc Heros', to: '/dc-heros' },
+        { title: 'Calendar', to: '/calendar' },
+        { title: 'Markdown', to: '/markdown' },
+      ],
+    }
+  },
+})
 </script>
