@@ -1,7 +1,7 @@
 <template>
   <AppHeader />
   <div class="w-full flex">
-    <!--    <DcHeros />-->
+    <router-view></router-view>
     <Calendar />
   </div>
 </template>

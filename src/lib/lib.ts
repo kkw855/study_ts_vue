@@ -20,11 +20,22 @@ export function loadLocalStorage<A>(key: string): any {
   )
 }
 
+/**
+ * 해당 년, 월이 몇 일까지 있는가?
+ * return 28 ~ 31
+ * @param year Full year number(ex 2022)
+ * @param month 1 ~ 12
+ */
 export function getLastDayInMonth(year: number, month: number): number {
   return new Date(year, month, 0).getDate()
 }
 
-// 0 부터 Sun day
+/**
+ * 해당 년, 월에 1일이 무슨 요일인가?
+ * return Sun day(0) ~ Sat day(6)
+ * @param year
+ * @param month
+ */
 export function getStartDayInMonth(year: number, month: number): number {
   return new Date(year, month - 1, 1).getDay()
 }
