@@ -3,11 +3,9 @@
     <h1 class="w-full text-center text-3xl my-4">Markdown App</h1>
     <section class="flex m-auto w-10/12 h-screen">
       <article class="w-1/2 border">
-        <textarea v-model="text" class="w-full h-full"></textarea>
+        <textarea class="w-full h-full" @input="update"></textarea>
       </article>
-      <article class="w-1/2 border bg-gray-100">
-        {{ markedText }}
-      </article>
+      <article class="w-1/2 border bg-gray-100" v-html="markedText"></article>
     </section>
   </div>
 </template>
@@ -20,11 +18,19 @@ export default defineComponent({
   data() {
     return {
       text: '',
+      timeout: 0,
     }
   },
   computed: {
     markedText(): string {
       return marked(this.text)
+    },
+  },
+  methods: {
+    update(e: Event) {
+      this.timeout = setTimeout(() => {
+        this.text = (e.target as HTMLInputElement).value
+      }, 1000)
     },
   },
 })
