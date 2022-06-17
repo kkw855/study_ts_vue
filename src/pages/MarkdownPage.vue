@@ -13,12 +13,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { marked } from 'marked'
+import debounce from '../utilities/mixins/debounce'
 
 export default defineComponent({
+  mixins: [debounce],
   data() {
     return {
       text: '',
-      timeout: 0,
+      timeout: '' as unknown,
     }
   },
   computed: {
@@ -28,9 +30,8 @@ export default defineComponent({
   },
   methods: {
     update(e: Event) {
-      this.timeout = setTimeout(() => {
-        this.text = (e.target as HTMLInputElement).value
-      }, 1000)
+      const task = () => (this.text = (e.target as HTMLInputElement).value)
+      this.debounce(task, 500)
     },
   },
 })

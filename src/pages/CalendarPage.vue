@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { getLastDayInMonth, getStartDayInMonth } from '../lib/lib'
+import { getLastDayInMonth, getStartDayInMonth } from '../utilities/lib'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

@@ -39,3 +39,12 @@ export function getLastDayInMonth(year: number, month: number): number {
 export function getStartDayInMonth(year: number, month: number): number {
   return new Date(year, month - 1, 1).getDay()
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function debounce(f: Function, ms = 300) {
+  let timeoutId: ReturnType<typeof setTimeout>
+  return function (this: never, ...args: never[]) {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => f.apply(this, args), ms)
+  }
+}

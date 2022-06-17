@@ -77,15 +77,6 @@ export default defineComponent({
       this.dcHeros = Array.filterWithIndex((idx: number) => idx != index)(
         this.dcHeros
       )
-      // const gt1 = (heroLength: number) => (index: number) =>
-      //   gt(N.Ord)(heroLength, index)
-      // pipe(
-      //   index,
-      //   O.fromPredicate(gt1(this.dcHeros.length)),
-      //   O.map(
-      //
-      //   )
-      // )
     },
   },
 })
