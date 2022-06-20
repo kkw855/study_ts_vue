@@ -1,4 +1,12 @@
-<template>Counter: {{ counter }}</template>
+<template>
+  <div id="demo">
+    <button @click="show = !show">Toggle</button>
+
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
+  </div>
+</template>
 
 <script>
 import { defineComponent } from 'vue'
@@ -6,15 +14,20 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      counter: 0,
+      show: true,
     }
-  },
-  mounted() {
-    setInterval(() => {
-      this.counter++
-    }, 1000)
   },
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
