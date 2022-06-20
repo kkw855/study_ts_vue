@@ -10,6 +10,7 @@
     >
       {{ link.title }}
     </router-link>
+    <button @click="$emit('open-login-modal')">Login</button>
   </nav>
 </template>
 
@@ -17,6 +18,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  emits: ['open-login-modal'],
   data() {
     return {
       list: [
