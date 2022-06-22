@@ -5,6 +5,7 @@
       <article class="w-1/2 border">
         <textarea class="w-full h-full" @input="update"></textarea>
       </article>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <article class="w-1/2 border bg-gray-100" v-html="markedText"></article>
     </section>
   </div>

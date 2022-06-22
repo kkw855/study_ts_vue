@@ -33,8 +33,8 @@ export function getLastDayInMonth(year: number, month: number): number {
 /**
  * 해당 년, 월에 1일이 무슨 요일인가?
  * return Sun day(0) ~ Sat day(6)
- * @param year
- * @param month
+ * @param year Full year number(ex 2022)
+ * @param month 1 ~ 12
  */
 export function getStartDayInMonth(year: number, month: number): number {
   return new Date(year, month - 1, 1).getDay()

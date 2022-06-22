@@ -13,7 +13,7 @@
     <section class="flex flex-wrap my-2">
       <div :style="blank"></div>
       <p
-        v-for="num in getLastDayInMonth(currentYear, currentMonth + 1)"
+        v-for="num in getDays"
         :key="num"
         class="w-[14.28%] text-center"
         :class="currentDateClass(num)"
@@ -51,6 +51,9 @@ export default defineComponent({
       return new Intl.DateTimeFormat('en-US', {
         month: 'long',
       }).format(new Date(this.currentYear, this.currentMonth))
+    },
+    getDays(): number {
+      return getLastDayInMonth(this.currentYear, this.currentMonth + 1)
     },
   },
   methods: {

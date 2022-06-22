@@ -11,7 +11,7 @@
         <button @click="removeHero(index)">x</button>
       </li>
     </ul>
-    <form class="mt-10" @submit.prevent="addHero($data.dcHeros, $data.newHero)">
+    <form class="mt-10" @submit.prevent="addHero(dcHeros, newHero)">
       <input
         v-model="newHero"
         class="border rounded"
@@ -33,8 +33,6 @@ import { pipe } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
 import { not } from 'fp-ts/Predicate'
 import * as S from 'fp-ts/string'
-import { gt } from 'fp-ts/Ord'
-import * as N from 'fp-ts/number'
 import { defineComponent } from 'vue'
 
 function add(heros: Array<{ name: string }>) {
@@ -45,8 +43,6 @@ export default defineComponent({
   data() {
     return {
       newHero: '',
-      fname: 'Sarthak',
-      lname: 'Shrivastava',
       dcHeros: [
         { name: 'SuperGirl2' },
         { name: 'Flash' },
@@ -72,8 +68,6 @@ export default defineComponent({
       this.newHero = ''
     },
     removeHero(index: number) {
-      console.log(gt(N.Ord)(1, 2))
-      console.log(gt(N.Ord)(2, 1))
       this.dcHeros = Array.filterWithIndex((idx: number) => idx != index)(
         this.dcHeros
       )
