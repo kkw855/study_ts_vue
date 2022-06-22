@@ -2,6 +2,8 @@ import { getLastDayInMonth, getStartDayInMonth } from './lib'
 import { flow, pipe } from 'fp-ts/function'
 import * as O from 'fp-ts/Option'
 import * as T from 'fp-ts/Task'
+import * as TE from 'fp-ts/TaskEither'
+import axios from 'axios'
 
 test('getLastDayInMonth', () => {
   expect(getLastDayInMonth(2020, 2)).toEqual(29)
@@ -57,22 +59,12 @@ test('fp-ts part2', () => {
 })
 
 test('fp-ts part3', () => {
-  async function asyncFunction(id: string) {
-    if (id.length > 36) {
-      throw new Error('id must have length less than or equal to 36')
-    }
-    // do async work here
-  }
-
-  const boolTask: T.Task<boolean> = async () => {
-    try {
-      await asyncFunction('abc')
-      return true
-    } catch (err) {
-      return false
-    }
-  }
-
-  const bar = T.of('Hi')
-  const fdsa: T.Task<string> = () => Promise.resolve('asfd')
+  const task = async () =>
+    pipe(
+      TE.tryCatch(
+    () => axios.get('https://httpstat.us/200'),
+      (reason) => new Error(`${reason}`)
+    ),
+      TE.map((resp) => resp.data)
+  )
 })
