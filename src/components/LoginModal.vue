@@ -7,15 +7,24 @@
     <div class="flex h-full">
       <div class="z-30 m-auto bg-white p-2 rounded shadow w-1/3">
         <div class="p-2 border">
-          <h1 class="text-xl text-center">Login</h1>
-          <form class="p-2 my-2">
+          <h1 class="text-2xl text-center">Login</h1>
+          <form class="p-2 my-2" @submit.prevent="submit">
             <div class="my-4">
               <label>Email or Username</label>
-              <input class="rounded shadow p-2 w-full" />
+              <input
+                v-model="email"
+                class="rounded shadow p-2 w-full"
+                placeholder="Enter your email or username"
+              />
             </div>
             <div class="my-4">
               <label>Password</label>
-              <input class="rounded shadow p-2 w-full" type="password" />
+              <input
+                v-model="password"
+                class="rounded shadow p-2 w-full"
+                type="password"
+                placeholder="Enter your password"
+              />
             </div>
             <div class="my-4">
               <button
@@ -34,13 +43,33 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { pipe } from 'fp-ts/function'
+import * as TE from 'fp-ts/TaskEither'
+
+function login(email: string, password: string) {
+  const auth = getAuth()
+  pipe(
+    TE.tryCatch(
+      () => signInWithEmailAndPassword(auth, email, password),
+      (reason) => console.log(`${reason}`)
+    ),
+    TE.map((res) => console.log(res))
+  )()
+}
 
 export default defineComponent({
   emits: ['close-login-modal'],
   data() {
     return {
-      isOpen: true,
+      email: '',
+      password: '',
     }
+  },
+  methods: {
+    submit() {
+      login(this.email, this.password)
+    },
   },
 })
 </script>
